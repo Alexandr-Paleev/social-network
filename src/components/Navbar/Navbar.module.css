@@ -1,0 +1,24 @@
+.nav {
+  grid-area: n;
+  background-color: lightgreen;
+  padding: 20px;
+}
+
+.item a {
+  color: white;
+  text-decoration: none;
+}
+
+.item a.activeLink {
+  color:gold;
+}
+
+.itemFriend {
+  display: flex;
+}
+
+.friends {
+  color: white;
+  font-size: 18px;
+  margin-top: 250px;
+}
