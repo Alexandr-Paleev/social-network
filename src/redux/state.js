@@ -35,43 +35,72 @@ let store = {
           {id: 3, name: "Sveta", ava: "https://trikky.ru/wp-content/blogs.dir/1/files/2020/04/09/img_20200409_161212-350x250.jpg"}
         ]
       }
-  },
-  getState() {
-    return this._state
-  },
-  _callSubscriber() {
-    console.log("State changed")
-  },
-  addPost() {
-    const newPost = {
-      id: Date.now(), 
-      message: this._state.profilePage.newPostText, 
-      like: 0
-    }
-    this._state.profilePage.posts.push(newPost)
-    this._state.profilePage.newPostText = ""
-    this._callSubscriber(this._state)
-  },
-  updatePostText(newText) {
-    this._state.profilePage.newPostText = newText
-    this._callSubscriber(this._state)
-  },
-  addMessage() {
-    const newMessageObj = {
-      id: Date.now(), 
-      message: this._state.messagesPage.newMessageText
-    }
-    this._state.messagesPage.messages.push(newMessageObj)
-    this._state.messagesPage.newMessageText = ""
-    this._callSubscriber(this._state)
-  },
-  newMessageHandler(newMessage) {
-    this._state.messagesPage.newMessageText = newMessage
-    this._callSubscriber(this._state)
-  },
-  subscribe(observer) {
-    this._callSubscriber = observer
-  }
+    },
+    _callSubscriber() {
+      console.log("State changed")
+    },
+
+    getState() {
+      return this._state
+    },
+    subscribe(observer) {
+      this._callSubscriber = observer
+    },
+
+    // addPost() {
+    //   const newPost = {
+    //     id: Date.now(), 
+    //     message: this._state.profilePage.newPostText, 
+    //     like: 0
+    //   }
+    //   this._state.profilePage.posts.push(newPost)
+    //   this._state.profilePage.newPostText = ""
+    //   this._callSubscriber(this._state)
+    // },
+    // updatePostText(newText) {
+    //   this._state.profilePage.newPostText = newText
+    //   this._callSubscriber(this._state)
+    // },
+    // addMessage() {
+    //   const newMessageObj = {
+    //     id: Date.now(), 
+    //     message: this._state.messagesPage.newMessageText
+    //   }
+    //   this._state.messagesPage.messages.push(newMessageObj)
+    //   this._state.messagesPage.newMessageText = ""
+    //   this._callSubscriber(this._state)
+    // },
+    // newMessageHandler(newMessage) {
+    //   this._state.messagesPage.newMessageText = newMessage
+    //   this._callSubscriber(this._state)
+    // },
+
+    dispatch(action) {
+      if (action.type === 'ADD-POST') {
+        const newPost = {
+          id: Date.now(), 
+          message: this._state.profilePage.newPostText, 
+          like: 0
+        }
+        this._state.profilePage.posts.push(newPost)
+        this._state.profilePage.newPostText = ""
+        this._callSubscriber(this._state)
+      } else if (action.type === 'UPDATE-POST-TEXT') {
+        this._state.profilePage.newPostText = action.newText
+        this._callSubscriber(this._state)
+      } else if (action.type === 'ADD-MESSAGE') {
+        const newMessageObj = {
+          id: Date.now(), 
+          message: this._state.messagesPage.newMessageText
+        }
+        this._state.messagesPage.messages.push(newMessageObj)
+        this._state.messagesPage.newMessageText = ""
+        this._callSubscriber(this._state)
+      } else if (action.type === 'NEW-MESSAGE-HANDLER') {
+        this._state.messagesPage.newMessageText = action.newMessage
+        this._callSubscriber(this._state)
+      }
+    }    
 }
 
 export default store

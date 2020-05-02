@@ -11,10 +11,10 @@ export let rerenderEntireTree = (state) => {
         <BrowserRouter>
             <App 
                 state={state} 
-                addPost={store.addPost.bind(store)} 
-                updatePostText={store.updatePostText.bind(store)} 
-                addMessage={store.addMessage.bind(store)} 
-                newMessageHandler={store.newMessageHandler.bind(store)} 
+                dispatch={store.dispatch.bind(store)} 
+                // updatePostText={store.updatePostText.bind(store)} 
+                // addMessage={store.addMessage.bind(store)} 
+                // newMessageHandler={store.newMessageHandler.bind(store)} 
             />    
         </BrowserRouter>, document.getElementById('root')
     );    
