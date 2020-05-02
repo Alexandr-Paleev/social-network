@@ -29,7 +29,6 @@ export default function Dialogs(props) {
 
     const newMessageHandler = () => {
         let message = newMessage.current.value
-        console.log(message)
         props.newMessageHandler(message)
     }
 

@@ -1,4 +1,6 @@
-import { rerenderEntireTree } from "../render"
+let rerenderEntireTree = () => {
+  console.log("State changed")
+}
 
 let state = {
     profilePage: {
@@ -28,7 +30,7 @@ let state = {
           {id: 4, message: "Yo"},
           {id: 5, message: "Yo"},
         ],
-        newMessageText: "Alex "
+        newMessageText: ""
     },
     sidebar: {
       friends: [
@@ -39,8 +41,10 @@ let state = {
     }
 }
 
-export let addPost = () => {
-    let newPost = {
+window.state = state
+
+export const addPost = () => {
+    const newPost = {
       id: Date.now(), 
       message: state.profilePage.newPostText, 
       like: 0
@@ -50,13 +54,13 @@ export let addPost = () => {
     rerenderEntireTree(state)
 }
 
-export let updatePostText = newText => {
+export const updatePostText = newText => {
     state.profilePage.newPostText = newText
     rerenderEntireTree(state)
 }
 
-export let addMessage = () => {
-  let newMessageObj = {
+export const addMessage = () => {
+  const newMessageObj = {
     id: Date.now(), 
     message: state.messagesPage.newMessageText
   }
@@ -65,9 +69,13 @@ export let addMessage = () => {
   rerenderEntireTree(state)
 }
 
-export let newMessageHandler = newMessage => {
+export const newMessageHandler = newMessage => {
     state.messagesPage.newMessageText = newMessage
     rerenderEntireTree(state)
+}
+
+export const subscribe = (observer) => {
+    rerenderEntireTree = observer
 }
 
 export default state
