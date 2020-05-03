@@ -24,13 +24,11 @@ export default function Dialogs(props) {
     let newMessage = React.createRef()
 
     const addMessage = () => {
-        //props.addMessage()
         props.dispatch({type: 'ADD-MESSAGE'})
     }
 
     const newMessageHandler = () => {
         let message = newMessage.current.value
-        //props.newMessageHandler(message)
         props.dispatch({type: 'NEW-MESSAGE-HANDLER', newMessage: message})
     }
 
