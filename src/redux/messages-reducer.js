@@ -1,7 +1,26 @@
 const ADD_MESSAGE = 'ADD-MESSAGE'
 const NEW_MESSAGE_HANDLER = 'NEW-MESSAGE-HANDLER'
 
-const messagesReducer = (state, action) => {
+let initialState = {
+    dialogs: [
+      {id: 1, name: "Dimych"},
+      {id: 2, name: "Petya"},
+      {id: 3, name: "Sveta"},
+      {id: 4, name: "Kolya"},
+      {id: 5, name: "Sasha"},
+      {id: 6, name: "Katya"}
+    ],
+    messages: [
+      {id: 1, message: "Hi"},
+      {id: 2, message: "How are you?"},
+      {id: 3, message: "Yo"},
+      {id: 4, message: "Yo"},
+      {id: 5, message: "Yo"},
+    ],
+    newMessageText: ""
+}
+
+const messagesReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_MESSAGE:
             const newMessageObj = {
