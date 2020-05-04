@@ -19,7 +19,8 @@ const App = (props) => {
             path="/dialogs" 
             render={()=> {
               return (
-                <Dialogs 
+                <Dialogs
+                  store={props.store}
                   messagesPage={props.state.messagesPage} 
                   dispatch={props.dispatch}
                 />
@@ -29,10 +30,7 @@ const App = (props) => {
             path="/profile" 
             render={()=> {
               return (
-                <Profile 
-                  profilePage={props.state.profilePage} 
-                  dispatch={props.dispatch}
-                />
+                <Profile store={props.store} />
               )
             }} />
           <Route path="/news" component={News} />
