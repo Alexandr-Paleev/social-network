@@ -1,6 +1,8 @@
 {
   "name": "social-network",
   "version": "0.1.0",
+  "description": "My network",
+  "author": "Alexander Paleev <paleev045@gmail.com>",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
