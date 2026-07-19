@@ -16,19 +16,19 @@ export default function Navbar(props) {
     return (
       <nav className={s.nav}>
         <div className={s.item}>
-          <NavLink to="/profile" activeClassName={s.activeLink}>Profile</NavLink>
+          <NavLink to="/profile" className={({ isActive }) => (isActive ? s.activeLink : undefined)}>Profile</NavLink>
         </div>
         <div className={s.item}>
-          <NavLink to="/dialogs" activeClassName={s.activeLink}>Messages</NavLink>
+          <NavLink to="/dialogs" className={({ isActive }) => (isActive ? s.activeLink : undefined)}>Messages</NavLink>
         </div>
         <div className={s.item}>
-          <NavLink to="/news" activeClassName={s.activeLink}>News</NavLink>
+          <NavLink to="/news" className={({ isActive }) => (isActive ? s.activeLink : undefined)}>News</NavLink>
         </div>
         <div className={s.item}>
-          <NavLink to="/music" activeClassName={s.activeLink}>Music</NavLink>
-        </div>        
+          <NavLink to="/music" className={({ isActive }) => (isActive ? s.activeLink : undefined)}>Music</NavLink>
+        </div>
         <div className={s.item}>
-          <NavLink to="/settings" activeClassName={s.activeLink}>Settings</NavLink>
+          <NavLink to="/settings" className={({ isActive }) => (isActive ? s.activeLink : undefined)}>Settings</NavLink>
         </div>
         <div className={s.friends}>
           <h2>Friends</h2>          

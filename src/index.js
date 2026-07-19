@@ -8,7 +8,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 export let rerenderEntireTree = (state) => {
     ReactDOM.render(
-        <BrowserRouter>
+        <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
             <App 
                 state={state} 
                 store={store}
